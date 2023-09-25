@@ -1,0 +1,67 @@
+/* for adjusting the size of the images */
+.post img{
+    width: 100%;
+}
+
+/* post heading */
+.post h2{
+    font-size: 20px;
+    text-align: center;
+}
+
+/* day and date */
+.post p{
+    text-align: center;
+}
+
+/* arranging them properly */
+.parent-container{
+    display: flex;
+    align-items: center;
+    padding: 0% 2% 2% 2%;
+    justify-content: center;
+}
+
+/* adjusting the slider size */
+.slider{
+    width: 60%;
+    padding: 0 5%;
+}
+
+/* removed unnecessary gaps */
+.wp-site-blocks{
+    padding-bottom: 0 !important;
+}
+
+/* buttons styling */
+button{
+    cursor: pointer;
+    border-radius: 40px;
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid black;
+    font-size: 40px;
+    padding: 15px;
+    transition: 0.5s;
+}
+button:hover{
+    background: linear-gradient(#e66465, #9198e5);
+}
+
+/* media queries */
+@media (max-width: 750px) {
+    button{
+        padding: 10px;
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 520px) {
+    button{
+        padding: 5px;
+        font-size: 25px;
+    }
+    .post h2{
+        font-size: 14px;
+    }
+}

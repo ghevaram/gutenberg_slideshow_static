@@ -2,6 +2,8 @@ const apiUrl = "https://wptavern.com/wp-json/wp/v2/posts";
 
 document.addEventListener("DOMContentLoaded", function () {
   const targetElement = document.querySelector("body");
+  let touchStartX = 0;
+  let touchEndX = 0;
 
   function createPostElement(post) {
     const postDiv = document.createElement("div");
@@ -133,6 +135,29 @@ document.addEventListener("DOMContentLoaded", function () {
       function stopAutoScroll() {
         clearInterval(autoScrollInterval);
       }
+
+      slider.addEventListener("touchstart", (e) => {
+        touchStartX = e.touches[0].clientX;
+      });
+
+      slider.addEventListener("touchmove", (e) => {
+        touchEndX = e.touches[0].clientX;
+      });
+
+      slider.addEventListener("touchend", () => {
+        const swipeDistance = touchStartX - touchEndX;
+        const swipeThreshold = 50;
+
+        if (swipeDistance > swipeThreshold) {
+          stopAutoScroll();
+          nextSlide();
+          startAutoScroll();
+        } else if (swipeDistance < -swipeThreshold) {
+          stopAutoScroll();
+          prevSlide();
+          startAutoScroll();
+        }
+      });
 
       showSlide(currentSlide);
       startAutoScroll();
